@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}{{ post.location }} — Блогикум{% endblock title %}
+
+{% block content %}
+<div class="container py-5">
+    <article>
+        <h1>{{ post.location }}</h1>
+        <div class="mb-3">
+            <span class="fw-bold">Дата:</span> {{ post.date }}
+        </div>
+        <div class="mb-3">
+            <span class="fw-bold">Категория:</span> {{ post.category }}
+        </div>
+        <div class="content">
+            {{ post.text|linebreaks }}
+        </div>
+        <a href="{% url 'blog:index' %}" class="btn btn-secondary mt-3">Вернуться к списку постов</a>
+    </article>
+</div>
+{% endblock %}

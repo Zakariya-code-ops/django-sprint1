@@ -1,8 +1,6 @@
 import re
-
 import pytest
 from pytest_django.asserts import assertTemplateUsed
-
 from tests.conftest import try_get_url
 
 
@@ -15,9 +13,10 @@ from tests.conftest import try_get_url
         ('category/category_slug/', 'blog/category.html'),
         ('pages/about/', 'pages/about.html'),
         ('pages/rules/', 'pages/rules.html'),
-    ]
+    ],
 )
 def test_page_templates(client, url, template):
+    """Проверяет использование корректного шаблона для каждой страницы."""
     url = f'/{url}' if url else '/'
     response = try_get_url(client, url)
     assertTemplateUsed(response, template, msg_prefix=(
@@ -25,9 +24,9 @@ def test_page_templates(client, url, template):
         f'шаблон `{template}`.'
     ))
 
-
 @pytest.mark.parametrize('post_id', (0, 1, 2))
 def test_post_detail(post_id, client, posts):
+    """Проверяет передачу корректного поста в контекст страницы детализации."""
     url = f'/posts/{post_id}/'
     response = try_get_url(client, url)
     assert response.context is not None, (
@@ -46,13 +45,14 @@ def test_post_detail(post_id, client, posts):
 
 
 def test_post_list(client, posts):
+    """Проверяет отображение списка постов на главной странице."""
     url = '/'
     response = try_get_url(client, url)
-    reversed_trunketed_post_texts = [
+    reversed_truncated_post_texts = [
         post['text'][:20] for post in reversed(posts)
     ]
     reversed_post_list_pattern = re.compile(
-        r'[\s\S]+?'.join(reversed_trunketed_post_texts)
+        r'[\s\S]+?'.join(reversed_truncated_post_texts),
     )
     page_content = response.content.decode('utf-8')
     assert re.search(reversed_post_list_pattern, page_content), (

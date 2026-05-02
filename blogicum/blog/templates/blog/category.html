@@ -1,16 +1,18 @@
+<!-- blog/category.html -->
 {% extends "base.html" %}
 
 {% block content %}
-    <h1>Лента записей</h1>
+    <h1>Записи категории «{{ category_slug }}»</h1>
+    
     {% for post in posts %}
-        <div>
+        <div class="post-item">
             <ul>
                 <li>Место: {{ post.location }}</li>
                 <li>Дата: {{ post.date }}</li>
                 <li>Категория: {{ post.category }}</li>
             </ul>
-            <p>{{ post.text|truncatewords:20 }}...</p>
-            <a href="{% url 'blog:post_detail' post.id %}">Читать полный текст</a>
+            <p>{{ post.text|truncatechars:50 }}...</p>
+            <a href="/post/{{ post.id }}">Читать полный текст</a>
             <hr>
         </div>
     {% endfor %}

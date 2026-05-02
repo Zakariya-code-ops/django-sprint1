@@ -1,0 +1,13 @@
+<!-- blog/detail.html -->
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Полный текст записи</h1>
+    <ul>
+        <li>Место: {{ post.location }}</li>
+        <li>Дата: {{ post.date }}</li>
+        <li>Категория: {{ post.category }}</li>
+    </ul>
+    <p>{{ post.text }}</p>
+    <a href="/">Назад</a>
+{% endblock %}

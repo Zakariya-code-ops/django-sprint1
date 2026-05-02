@@ -4,7 +4,7 @@ from .models import Post
 
 @admin.register(Post)
 class PostAdmin(admin.ModelAdmin):
-    """Настройка админ‑интерфейса для модели Post: поля списка, фильтры, поиск."""
+    """Настройка админ‑интерфейса для модели Post."""
 
     list_display = ('title', 'author', 'created_at', 'is_published')
     list_filter = ('is_published', 'created_at')

@@ -15,6 +15,7 @@ class Page(models.Model):
     def __str__(self):
         return self.title
 
+
 class MenuItem(models.Model):
     """Пункт меню навигации."""
 

@@ -12,6 +12,7 @@ class PageAdmin(admin.ModelAdmin):
     search_fields = ('title', 'content')
     prepopulated_fields = {'slug': ('title',)}
 
+
 @admin.register(MenuItem)
 class MenuItemAdmin(admin.ModelAdmin):
     """Админ‑панель для MenuItem: редактирование порядка и активности."""

@@ -4,31 +4,8 @@
 <h1>Лента записей</h1>
 
 {% for post in posts %}
-<<<<<<< HEAD
     {% include "blog/includes/post.html" with post=post %}
 {% endfor %}
 
 {% endblock %}
-=======
-    <div class="post-item">
-        <ul>
-            <li>Место: {{ post.location }}</li>
-            <li>Дата: {{ post.date }}</li>
-            <li>Категория:
-                <a href="{% url 'blog:category_posts' post.category %}">
-                    {{ post.category }}
-                </a>
-            </li>
-        </ul>
 
-        <p>{{ post.text|slice:":20" }}</p>
-
-        <a href="{% url 'blog:post_detail' post.id %}">
-            Читать полный текст
-        </a>
-        <hr>
-    </div>
-{% endfor %}
-
-{% endblock %}
->>>>>>> 9fd46ef (Исправил замечания ревьюера)

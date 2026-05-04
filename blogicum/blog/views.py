@@ -45,6 +45,7 @@ posts = [
     },
 ]
 
+
 posts_dict = {post['id']: post for post in posts}
 
 
@@ -59,15 +60,9 @@ def post_detail(request, post_id):
     if post is None:
         raise Http404('Пост не найден')
 
-<<<<<<< HEAD
-    return render(
-        request,
-        'blog/detail.html',
-        {'post': post}
-    )
-=======
-    return render(request, 'blog/detail.html', {'post': post})
->>>>>>> 9fd46ef (Исправил замечания ревьюера)
+    return render(request, 'blog/detail.html', {
+        'post': post
+    })
 
 
 def category_posts(request, category_slug):

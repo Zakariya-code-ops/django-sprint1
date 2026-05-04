@@ -9,18 +9,17 @@
         </li>
     </ul>
 
-    <p>
-        {% if is_detail %}
-            {{ post.text|linebreaks }}
-        {% else %}
-            {{ post.text|slice:":20" }}
-        {% endif %}
-    </p>
+    {% if is_detail %}
+        <p>{{ post.text|linebreaks }}</p>
+    {% else %}
+        <p>{{ post.text|slice:":20" }}</p>
+    {% endif %}
 
     {% if not is_detail %}
         <a href="{% url 'blog:post_detail' post.id %}">
             Читать полный текст
         </a>
     {% endif %}
+
     <hr>
 </div>

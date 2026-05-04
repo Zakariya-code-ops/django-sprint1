@@ -4,7 +4,24 @@
 <h1>Записи категории «{{ category_slug }}»</h1>
 
 {% for post in posts %}
+<<<<<<< HEAD
     {% include "blog/includes/post.html" with post=post %}
+=======
+    <div class="post-item">
+        <ul>
+            <li>Место: {{ post.location }}</li>
+            <li>Дата: {{ post.date }}</li>
+            <li>Категория: {{ post.category }}</li>
+        </ul>
+
+        <p>{{ post.text|slice:":20" }}</p>
+
+        <a href="{% url 'blog:post_detail' post.id %}">
+            Читать полный текст
+        </a>
+        <hr>
+    </div>
+>>>>>>> 9fd46ef (Исправил замечания ревьюера)
 {% endfor %}
 
 {% endblock %}

@@ -1,5 +1,26 @@
-<article>
-  <p>{{ post.date }}</p>
-  <p>{{ post.location }}</p>
-  <p>{{ post.text }}</p>
-</article>
+<div class="post-item">
+    <ul>
+        <li>Место: {{ post.location }}</li>
+        <li>Дата: {{ post.date }}</li>
+        <li>Категория:
+            <a href="{% url 'blog:category_posts' post.category %}">
+                {{ post.category }}
+            </a>
+        </li>
+    </ul>
+
+    <p>
+        {% if is_detail %}
+            {{ post.text|linebreaks }}
+        {% else %}
+            {{ post.text|slice:":20" }}
+        {% endif %}
+    </p>
+
+    {% if not is_detail %}
+        <a href="{% url 'blog:post_detail' post.id %}">
+            Читать полный текст
+        </a>
+    {% endif %}
+    <hr>
+</div>
